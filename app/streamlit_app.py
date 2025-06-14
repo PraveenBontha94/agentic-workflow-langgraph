@@ -11,7 +11,7 @@ st.title("Agentic Workflow using LangGraph")
 query = st.text_input(" Enter your query:")
 
 if query:
-    st.info("Initializing graph...", icon="🔄")
+    st.info("Initializing graph...")
     graph, initializer = build_langgraph_workflow()
     state = initializer(query)
 
@@ -20,13 +20,13 @@ if query:
         for idx, subtask in enumerate(state["plan"]):
             st.write(f"**Step {idx+1}:** {subtask}")
 
-    st.success(" Starting graph stream...")
+    st.success("Starting graph stream...")
     for update in graph.stream(state):
         for key, value in update.items():
             state[key] = value
 
     st.success("Graph execution completed successfully!")
-    st.header(" Final Completed Tasks:")
+    st.header("Final Completed Tasks:")
     for task, result in state['completed']:
         st.markdown(f"""
         <div style="background-color:#1E1E1E;padding:15px;border-radius:10px;margin-bottom:10px;">

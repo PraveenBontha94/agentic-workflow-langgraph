@@ -11,7 +11,7 @@ st.title("Agentic Workflow using LangGraph")
 query = st.text_input(" Enter your query:")
 
 if query:
-    st.info(" Initializing graph...", icon="")
+    st.info("Initializing graph...", icon="🔄")
     graph, initializer = build_langgraph_workflow()
     state = initializer(query)
 
